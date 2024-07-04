@@ -34,7 +34,7 @@ function Hero() {
             </div>
             <div className={styles.info}>
                 <h1>LokmanKhodziri</h1>
-                <h2>Frontend Developer</h2>
+                <h2>Fullstack Developer</h2>
             </div>
             <div className={styles.socialLinks}>
                 <a href="https://x.com/jiroooojiroooo" target='_blank' rel="noopener noreferrer">
