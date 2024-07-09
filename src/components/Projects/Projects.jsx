@@ -14,7 +14,7 @@ function Projects() {
                     src={Viberr}
                     link='https://github.com/LokmanKhodziri/Fullstack_Blog'
                     h3='Fullstack Blog'
-                    p='A blog website that have simple autentication for loging with NodeJs and MongoDB .'
+                    p='A blog website that have simple autentication for loging with NodeJs and MongoDB.'
                 />
                 <ProjectsCard
                     src={Viberr}
