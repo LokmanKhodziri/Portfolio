@@ -8,7 +8,7 @@ import githubLight from '../../assets/github-light.svg';
 import githubDark from '../../assets/github-dark.svg';
 import linkedinLight from '../../assets/linkedin-light.svg';
 import linkedinDark from '../../assets/linkedin-dark.svg';
-import CV from '../../assets/cv.pdf';
+import CV from '../../assets/Resume-Update-2024.pdf';
 import { useTheme } from '../common/ThemeContext';
 
 function Hero() {
@@ -47,7 +47,7 @@ function Hero() {
                     <img src={linkedinIcon} alt="Linkedin icon" />
                 </a>
             </div>
-            <p className={styles.description}>With a passion for developing modern React web apps for commercial businesses.</p>
+            <p className={styles.description}>Driven individual with a deep desire to transition into the world of development. I have honed and built interactive prototypes with my skills through self-learning and my current bachelor's study, fueling my passion for front-end development and its potential. Eager to learn, collaborate, and contribute fresh perspectives, I'm ready to embark on this journey and keep improving myself in real-world developer roles to become a valuable asset.</p>
             <a href={CV} download>
                 <button className={styles.button}>
                     Resume
