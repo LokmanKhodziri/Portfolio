@@ -2,46 +2,195 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    padding: 2rem 0;
+    background: linear-gradient(to bottom, var(--bg-color), var(--project-section-bg));
+    position: relative;
+    overflow: hidden;
+}
 
-    img {
-        max-width: 250px;
-        align-self: center;
-        background-color: var(--project-card-bg);
-        border-radius: 20px;
-    }
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+}
 
-    a {
-        width: fit-content;
-        text-decoration: none;
-        color: #222;
-        transition: transform 200ms ease-in-out;
-    }
+.sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    position: relative;
+    display: inline-block;
+    padding: 0 1rem;
+}
 
-    a:hover {
-        transform: scale(1.05);
-    }   
+.sectionTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
 }
 
 .projectsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    align-items: start;
+    justify-items: center;
+    padding: 0 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
 
-    p {
-        max-width: 35ch;
+.projectsContainer > * {
+    background: var(--project-card-bg);
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 320px;
+}
+
+.projectsContainer > *:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-color);
+}
+
+.projectsContainer img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.projectsContainer img:hover {
+    transform: scale(1.02);
+}
+
+.projectsContainer h3 {
+    font-size: 1.3rem;
+    margin: 0.8rem 0;
+    color: var(--text-color);
+}
+
+.projectsContainer p {
+    max-width: 100%;
+    line-height: 1.5;
+    color: var(--text-color);
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.projectsContainer a {
+    display: inline-block;
+    padding: 0.7rem 1.2rem;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid var(--accent-color);
+    font-size: 0.9rem;
+}
+
+.projectsContainer a:hover {
+    background: transparent;
+    color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+/* Tablet */
+@media (min-width: 600px) {
+    .container {
+        padding: 3rem 0;
+    }
+
+    .sectionTitle {
+        font-size: 2.2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .projectsContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .projectsContainer > * {
+        max-width: 280px;
+    }
+
+    .projectsContainer h3 {
+        font-size: 1.4rem;
+    }
+
+    .projectsContainer p {
+        font-size: 1rem;
     }
 }
 
-@media (width >= 800px) {
-    .projectsContainer {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        padding: 0 30px;
+/* Desktop */
+@media (min-width: 900px) {
+    .container {
+        padding: 4rem 0;
+    }
 
-        p {
-            max-width: 40ch;
-        }
+    .sectionTitle {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .projectsContainer {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 35px;
+        padding: 0 30px;
+    }
+
+    .projectsContainer > * {
+        max-width: 320px;
+        padding: 1.5rem;
+    }
+
+    .projectsContainer h3 {
+        font-size: 1.5rem;
+    }
+
+    .projectsContainer p {
+        max-width: 40ch;
+        font-size: 1rem;
+    }
+
+    .projectsContainer a {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1200px) {
+    .projectsContainer {
+        gap: 40px;
+    }
+
+    .projectsContainer > * {
+        max-width: 350px;
     }
 }
