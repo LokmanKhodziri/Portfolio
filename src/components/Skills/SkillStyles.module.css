@@ -1,49 +1,99 @@
+/* Main container for the Skills section
+ * Uses flexbox for vertical layout and centers all content
+ */
 .container {
     display: flex;
     flex-direction: column;
     text-align: center;
+    padding: 2rem 0;
 
+    /* Section title styling */
+    h1 {
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        color: var(--text-color);
+    }
+
+    /* Category headers styling (Frontend, Backend, etc.) */
+    h3 {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: var(--text-color);
+        font-size: 1.5rem;
+    }
+
+    /* Container for each skill item (icon + text) */
     span {
         display: flex;
         align-items: center;
         gap: 1px;
     }
 
+    /* Checkmark icon styling */
     img {
         width: 20px;
         height: 20px;
     }
 }
 
+/* Container for each skill category
+ * Uses flexbox for horizontal layout with wrapping
+ * Centers items both horizontally and vertically
+ */
 .skillList {
     display: flex;
-    justify-content: space-evenly;
-    align-self: center;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    row-gap: 20px;
+    gap: 20px;
     max-width: 26ch;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
+/* Horizontal divider between skill categories
+ * Creates a subtle separation line using the theme color
+ */
 hr {
     width: 50%;
     height: 1px;
     border: none;
     background-color: var(--text-color);
-    margin: 30px auto;
+    margin: 20px auto;
+    opacity: 0.3;
 }
 
+/* Responsive styles for larger screens (>= 800px) */
 @media (width >= 800px) {
+    .container {
+        padding: 4rem 0;
+
+        /* Larger section title on desktop */
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Larger category headers on desktop */
+        h3 {
+            font-size: 1.8rem;
+        }
+    }
+
+    /* Adjusted skill list layout for desktop */
     .skillList {
         max-width: fit-content;
         gap: 30px;
-
             
+        /* Larger skill text on desktop */
         p {
             font-size: 20px;
         }
     }
 
+    /* Narrower divider on desktop */
     hr {
         width: 30%;
+        margin: 30px auto;
     }
 }
