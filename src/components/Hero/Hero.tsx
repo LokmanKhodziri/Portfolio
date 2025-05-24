@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './HeroStyles.module.css';
 import heroImg from '../../assets/hero-img.png';
 import sun from '../../assets/sun.svg';
@@ -9,9 +10,9 @@ import githubDark from '../../assets/github-dark.svg';
 import linkedinLight from '../../assets/linkedin-light.svg';
 import linkedinDark from '../../assets/linkedin-dark.svg';
 import CV from '../../assets/Resume-Update-2024.pdf';
-import { useTheme } from '../common/ThemeContext';
+import { useTheme } from '../common/useTheme';
 
-function Hero() {
+const Hero: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
 
     const themeIcon = theme === 'light' ? sun : moon;
@@ -47,7 +48,7 @@ function Hero() {
                     <img src={linkedinIcon} alt="Linkedin icon" />
                 </a>
             </div>
-            <p className={styles.description}>Driven individual with a deep desire to transition into the world of development. I have honed and built interactive prototypes with my skills through self-learning and my current bachelor's study, fueling my passion for front-end development and its potential.</p>
+            <p className={styles.description}>Driven individual with a deep desire to transition into the world of development. I have honed and built interactive prototypes with my skills through self-learning and my current bachelor&apos;s study, fueling my passion for front-end development and its potential.</p>
             <a href={CV} download>
                 <button className={styles.button}>
                     Resume
@@ -57,4 +58,4 @@ function Hero() {
     );
 }
 
-export default Hero;
+export default Hero; 

@@ -1,6 +1,7 @@
+import React from 'react';
 import styles from './ContactStyles.module.css';
 
-function Contact() {
+const Contact: React.FC = () => {
     return (
         <section id='contact' className={styles.container}>
             <h1 className='sectionTitle'>Contact</h1>
@@ -43,7 +44,7 @@ function Contact() {
                 <input className='hover btn' type="submit" value='Submit' />
             </form>
         </section>
-    )
+    );
 }
 
-export default Contact
+export default Contact; 

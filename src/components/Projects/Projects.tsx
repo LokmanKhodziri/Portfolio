@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './ProjectsStyles.module.css';
 import Viberr from '../../assets/viberr.png';
 import FreshBurger from '../../assets/fresh-burger.png';
@@ -5,7 +6,7 @@ import Hipsster from '../../assets/hipsster.png';
 import Fitlift from '../../assets/fitlift.png';
 import ProjectsCard from '../common/ProjectsCard';
 
-function Projects() {
+const Projects: React.FC = () => {
     return (
         <section id='projects' className={styles.container}>
             <h1 className='sectionTitle'>Projects</h1>
@@ -42,7 +43,7 @@ function Projects() {
                 />
             </div>
         </section>
-    )
+    );
 }
 
-export default Projects
+export default Projects; 
