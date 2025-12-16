@@ -1,8 +1,15 @@
 .container {
     text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid #e0e0e0;
+}
 
-    p {
-        font-size: 16px;
-        color: var(--footer-text-color);
-    }
+[data-theme = 'dark'] .container {
+    border-top-color: #444;
+}
+
+.container p {
+    font-size: 1rem;
+    color: var(--footer-text-color);
+    opacity: 0.8;
 }
