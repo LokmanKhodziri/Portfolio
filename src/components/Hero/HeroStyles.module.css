@@ -4,25 +4,34 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap: 20px;
-    height: 100vh;
-    min-height: 500px;
-    padding: 2rem;
+    gap: 1.5rem;
+    padding: 4rem 1rem;
+    min-height: auto;
 }
 
 .hero {
-    max-width: 200px;
+    max-width: 180px;
     border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme = 'dark'] .hero {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .socialLinks {
     display: flex;
-    gap: 25px;
+    gap: 1.5rem;
     justify-content: center;
 }
 
 .socialLinks a img {
-    width: 30px;
+    width: 28px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.socialLinks a:hover img {
+    transform: scale(1.15);
 }
 
 .colorModeContainer {
@@ -31,57 +40,87 @@
 
 .colorMode {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -1rem;
+    top: -1rem;
     width: 25px;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.colorMode:hover {
+    transform: scale(1.1);
 }
 
 .description {
-    max-width: 50ch;
+    max-width: 55ch;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .info {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.8rem;
 }
 
 .button {
     background-color: var(--btn-color);
     color: var(--btn-text-color);
     border: none;
-    border-radius: 10px;
-    width: 120px;
-    height: 40px;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 4px 4px rgba(0,0,0,0.25);
-    transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+    border-radius: 8px;
+    padding: 0.7rem 1.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 .button:hover {
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .button:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 2px rgba(0,0,0,0.25);
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 600px) {
+    .container {
+        gap: 2rem;
+        padding: 6rem 2rem 4rem;
+    }
+    .hero {
+        max-width: 220px;
+    }
+    .socialLinks a img {
+        width: 30px;
+    }
+    .description {
+        font-size: 1.1rem;
+    }
+    .button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
 }
 
 @media (min-width: 800px) {
     .container {
-        align-items: center;
-        justify-content: space-evenly;
+        padding-top: 8rem;
+        padding-bottom: 6rem;
     }
-
     .hero {
         max-width: 350px;
+    }
+    .description {
+        font-size: 1.2rem;
     }
 }
 
 @media (min-width: 1400px) {
     .hero {
-        max-width: 420px;
+        max-width: 400px;
     }
 }

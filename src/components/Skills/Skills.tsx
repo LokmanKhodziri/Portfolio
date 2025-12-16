@@ -1,52 +1,73 @@
-import React from "react";
 import styles from "./SkillStyles.module.css";
-import checkMarkIcon from "../../assets/checkmark-dark.svg";
-import SkillList from "../common/SkillList";
+import { useTheme } from "../common/useTheme";
 
-const Skills: React.FC = () => {
+// Skill data organized by category
+const skills = {
+  Frontend: [
+    "React",
+    "Next.js",
+    "Tailwind CSS",
+    "Chakra UI",
+    "Redux",
+    "Bootstrap",
+  ],
+  "Programming Languages": [
+    "TypeScript",
+    "Java",
+    "Python",
+    "C",
+    "HTML",
+    "CSS",
+    "JavaScript",
+  ],
+  Backend: [
+    "Node.js",
+    "MongoDB",
+    "Firebase",
+    "Prisma",
+    "Neon",
+    "MySQL",
+    "PostgreSQL",
+    "Express.js",
+    "SpringBoot",
+  ],
+  "Tools & Others": [
+    "Git",
+    "GitHub",
+    "VS Code",
+    "Responsive Design",
+    "Figma",
+    "GitHub Actions",
+  ],
+};
+
+function Skills() {
+  const { theme } = useTheme();
+  const checkmarkIcon =
+    theme === "light"
+      ? "/src/assets/checkmark-light.svg"
+      : "/src/assets/checkmark-dark.svg";
+
   return (
-    <section id='skills' className={styles.container}>
-      <h1 className='sectionTitle'>Skills</h1>
-      <div className={styles.skillList}>
-        <h3>Frontend</h3>
-        <SkillList src={checkMarkIcon} skill='React' />
-        <SkillList src={checkMarkIcon} skill='Next.js' />
-        <SkillList src={checkMarkIcon} skill='Tailwind CSS' />
-        <SkillList src={checkMarkIcon} skill='Chakra UI' />
-        <SkillList src={checkMarkIcon} skill='Redux' />
-        <SkillList src={checkMarkIcon} skill='Bootstrap' />
+    <section id="skills" className={styles.container}>
+      <h1 className="sectionTitle">Skills</h1>
+      <div className={styles.skillCategories}>
+        {Object.entries(skills).map(([category, skillList]) => (
+          <div key={category} className={styles.skillCategory}>
+            <h3>{category}</h3>
+            <div className={styles.skillList}>
+              {skillList.map((skill) => (
+                <div key={skill} className={styles.skillItem}>
+                  <img src={checkmarkIcon} alt="Checkmark icon" />
+                  <span>{skill}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
-      <hr />
-      <div className={styles.skillList}>
-        <h3>Programming Languages</h3>
-        <SkillList src={checkMarkIcon} skill='TypeScript' />
-        <SkillList src={checkMarkIcon} skill='Java' />
-        <SkillList src={checkMarkIcon} skill='Python' />
-        <SkillList src={checkMarkIcon} skill='C' />
-        <SkillList src={checkMarkIcon} skill='HTML' />
-        <SkillList src={checkMarkIcon} skill='CSS' />
-        <SkillList src={checkMarkIcon} skill='JavaScript' />
-      </div>
-      <hr />
-      <div className={styles.skillList}>
-        <h3>Backend</h3>
-        <SkillList src={checkMarkIcon} skill='Node.js' />
-        <SkillList src={checkMarkIcon} skill='MongoDB' />
-        <SkillList src={checkMarkIcon} skill='Firebase' />
-        <SkillList src={checkMarkIcon} skill='Prisma' />
-        <SkillList src={checkMarkIcon} skill='Neon' />
-      </div>
-      <hr />
-      <div className={styles.skillList}>
-        <h3>Tools & Others</h3>
-        <SkillList src={checkMarkIcon} skill='Git' />
-        <SkillList src={checkMarkIcon} skill='GitHub' />
-        <SkillList src={checkMarkIcon} skill='VS Code' />
-        <SkillList src={checkMarkIcon} skill='Responsive Design' />
-      </div>
-      <hr />
     </section>
   );
-};
+}
 
 export default Skills;

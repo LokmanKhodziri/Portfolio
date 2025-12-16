@@ -38,4 +38,4 @@ const ProjectsCard: React.FC<ProjectsCardProps> = ({ src, link, h3, p }) => {
     );
 }
 
-export default ProjectsCard; 
+export default ProjectsCard;
