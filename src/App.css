@@ -1,26 +1,26 @@
 :root {
-    --background-color: #fff;
-    --btn-color: #0987f2;
-    --btn-text-color: #fff;
-    --project-card-bg: #fff;
-    --text-color: #222;
-    --form-text-color: #555;
-    --footer-text-color: #888;
-    --skill-item-bg: #fff;
-    --project-section-bg: #f0f0f0;
-    --accent-color: #0987f2;
+    --background-color: #f9fafb;
+    --btn-color: #0f172a;
+    --btn-text-color: #f9fafb;
+    --project-card-bg: #ffffff;
+    --text-color: #0f172a;
+    --form-text-color: #4b5563;
+    --footer-text-color: #6b7280;
+    --skill-item-bg: #ffffff;
+    --project-section-bg: #e5e7eb;
+    --accent-color: #0ea5e9;
 }
 
 [data-theme = 'dark'] {
-    --background-color: #222;
-    --btn-color: #fff;
-    --btn-text-color: #222;
-    --project-card-bg: #2a2a2a;
-    --text-color: #fff;
-    --form-text-color: #fff;
-    --footer-text-color: #bbb;
-    --project-section-bg: #333;
-    --accent-color: #fff;
+    --background-color: #020617;
+    --btn-color: #e5e7eb;
+    --btn-text-color: #020617;
+    --project-card-bg: #020617;
+    --text-color: #e5e7eb;
+    --form-text-color: #e5e7eb;
+    --footer-text-color: #9ca3af;
+    --project-section-bg: #020617;
+    --accent-color: #38bdf8;
 }
 
 body {
