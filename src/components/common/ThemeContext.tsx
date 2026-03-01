@@ -39,9 +39,9 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(undefine
  * @returns {JSX.Element} Theme provider wrapper
  */
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-    // Initialize theme from localStorage or default to 'light'
+    // Initialize theme from localStorage or default to 'dark'
     const [theme, setTheme] = useState<string>(
-        () => localStorage.getItem('theme') || 'light'
+        () => localStorage.getItem('theme') || 'dark'
     );
 
     // Update theme in localStorage and apply to body when theme changes
