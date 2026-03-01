@@ -22,14 +22,15 @@ const skills = {
   ],
   Backend: [
     "Node.js",
+    "Express.js",
+    "Spring Boot",
+    "REST APIs",
     "MongoDB",
     "Firebase",
     "Prisma",
     "Neon",
     "MySQL",
     "PostgreSQL",
-    "Express.js",
-    "SpringBoot",
   ],
   "Tools & Others": [
     "Git",
@@ -38,6 +39,11 @@ const skills = {
     "Responsive Design",
     "Figma",
     "GitHub Actions",
+    "Docker",
+    "Docker Compose",
+    "Jenkins",
+    "JWT Authentication",
+    "CI/CD Pipelines",
   ],
 };
 
