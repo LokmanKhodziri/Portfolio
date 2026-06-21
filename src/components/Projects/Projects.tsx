@@ -4,12 +4,25 @@ import Viberr from "../../assets/viberr.png";
 import FreshBurger from "../../assets/fresh-burger.png";
 import Fitlift from "../../assets/fitlift.png";
 import ProjectsCard from "../common/ProjectsCard";
+import TravelPlanner from "../../assets/travel-planner1.png";
 
 const Projects: React.FC = () => {
   return (
     <section id='projects' className={styles.container}>
       <h1 className={`sectionTitle ${styles.sectionTitle}`}>Projects</h1>
       <div className={styles.projectsContainer}>
+        <ProjectsCard
+          src={TravelPlanner}
+          link="https://jomjalanjalan.vercel.app/"
+          h3="JomJalanJalan"
+          p="A Muslim-friendly travel app with a Next.js frontend and Express + Prisma API. Plan day-by-day itineraries with activity recommendations, travel time estimates, interactive maps, a 3D travel globe, and built-in prayer times with nearby mosques and Halal food. OAuth via Google/GitHub."
+        />
+        <ProjectsCard
+          src={FreshBurger}
+          link='https://bebilisyard-demo.vercel.app/'
+          h3='Bebilis Yard Demo'
+          p='A demo web application for Bebilis Yard showcasing modern UI/UX and responsive design. Focuses on clean layout, engaging visuals, and reusable components to highlight products and content effectively across devices.'
+        />
         <ProjectsCard
           src={Viberr}
           link='https://github.com/LokmanKhodziri/Ecomm'
@@ -33,12 +46,6 @@ const Projects: React.FC = () => {
           link='https://github.com/LokmanKhodziri/capstone_project'
           h3='ExpenseTracker (Capstone Project)'
           p='A full-stack expense tracking application built with a Spring Boot backend and React frontend. Implements JWT authentication, secure password hashing, and persistent data storage with MySQL. Containerized with Docker and orchestrated via Docker Compose for easy local development.'
-        />
-        <ProjectsCard
-          src={FreshBurger}
-          link='https://bebilisyard-demo.vercel.app/'
-          h3='Bebilis Yard Demo'
-          p='A demo web application for Bebilis Yard showcasing modern UI/UX and responsive design. Focuses on clean layout, engaging visuals, and reusable components to highlight products and content effectively across devices.'
         />
       </div>
     </section>

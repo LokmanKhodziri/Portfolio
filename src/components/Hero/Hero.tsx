@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
       <section id="hero" className={styles.container}>
         <div className={styles.heroContent}>
           <div className={styles.heroLeft}>
-            <span className={styles.rolePill}>Fullstack Developer</span>
+            <span className={styles.rolePill}>Junior Fullstack Developer</span>
             <h1>Lokman Khodziri</h1>
             <p className={styles.tagline}>
               I build fullstack web applications with Node.js, Express, and
