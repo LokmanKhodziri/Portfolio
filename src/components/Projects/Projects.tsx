@@ -14,7 +14,7 @@ const Projects: React.FC = () => {
         <ProjectsCard
           src={TravelPlanner}
           link="https://jomjalanjalan.vercel.app/"
-          h3="JomJalanJalan"
+          h3="Musafir-Go"
           p="A Muslim-friendly travel app with a Next.js frontend and Express + Prisma API. Plan day-by-day itineraries with activity recommendations, travel time estimates, interactive maps, a 3D travel globe, and built-in prayer times with nearby mosques and Halal food. OAuth via Google/GitHub."
         />
         <ProjectsCard
