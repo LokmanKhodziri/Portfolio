@@ -1,52 +1,66 @@
 import React from "react";
 import styles from "./ProjectsStyles.module.css";
-import Viberr from "../../assets/viberr.png";
-import FreshBurger from "../../assets/fresh-burger.png";
-import Fitlift from "../../assets/fitlift.png";
+import MusafirGo from "../../assets/musafirgo.png";
+import Bebilis from "../../assets/bebilis.png";
+import CariPart from "../../assets/caripart.png";
 import ProjectsCard from "../common/ProjectsCard";
-import TravelPlanner from "../../assets/travel-planner1.png";
+import Reveal from "../common/Reveal";
+
+const projects = [
+  {
+    src: MusafirGo,
+    link: "https://musafirgo.vercel.app/",
+    title: "Musafir-Go",
+    role: "Fullstack · Live product",
+    summary:
+      "Muslim-friendly travel planner with day-by-day itineraries, maps, prayer times, and nearby halal spots. Next.js frontend backed by an Express + Prisma API with Google/GitHub OAuth.",
+    stack: ["Next.js", "Express", "Prisma", "OAuth"],
+    featured: true,
+  },
+  {
+    src: Bebilis,
+    link: "https://demo-bebilis-yard.vercel.app/",
+    title: "Bebilis Yard Demo",
+    role: "Frontend · Demo",
+    summary:
+      "Marketing demo for Bebilis Yard — responsive layout, reusable UI pieces, and product-focused presentation built to ship cleanly across devices.",
+    stack: ["React", "Responsive UI"],
+  },
+  {
+    src: CariPart,
+    link: "https://caripart.vercel.app/",
+    title: "CariPart",
+    role: "Fullstack · Ongoing",
+    summary:
+      "PC parts price comparison for Malaysian marketplaces. Import Shopee and Lazada exports, normalize messy product titles into canonical parts, and track MYR price trends for GPUs, CPUs, and RAM.",
+    stack: ["React", "Node.js", "Data pipeline"],
+  },
+];
 
 const Projects: React.FC = () => {
   return (
-    <section id='projects' className={styles.container}>
-      <h1 className={`sectionTitle ${styles.sectionTitle}`}>Projects</h1>
+    <section id="projects" className={styles.container}>
+      <Reveal>
+        <div className="sectionHeader">
+          <p className="sectionEyebrow">Selected work</p>
+          <h2 className="sectionTitle">Projects that ship end to end</h2>
+          <p className="sectionSubtitle">
+            APIs, data models, auth, and interfaces — built as real products,
+            not isolated UI pages.
+          </p>
+        </div>
+      </Reveal>
+
       <div className={styles.projectsContainer}>
-        <ProjectsCard
-          src={TravelPlanner}
-          link="https://jomjalanjalan.vercel.app/"
-          h3="Musafir-Go"
-          p="A Muslim-friendly travel app with a Next.js frontend and Express + Prisma API. Plan day-by-day itineraries with activity recommendations, travel time estimates, interactive maps, a 3D travel globe, and built-in prayer times with nearby mosques and Halal food. OAuth via Google/GitHub."
-        />
-        <ProjectsCard
-          src={FreshBurger}
-          link='https://bebilisyard-demo.vercel.app/'
-          h3='Bebilis Yard Demo'
-          p='A demo web application for Bebilis Yard showcasing modern UI/UX and responsive design. Focuses on clean layout, engaging visuals, and reusable components to highlight products and content effectively across devices.'
-        />
-        <ProjectsCard
-          src={Viberr}
-          link='https://github.com/LokmanKhodziri/Ecomm'
-          h3='E-commerce Platform'
-          p='A full-featured e-commerce platform built with React, Redux, and Firebase. Features include user authentication, shopping cart management, Stripe payment integration, and real-time database updates. Implemented state management with Redux, styled components, and responsive design.'
-        />
-        <ProjectsCard
-          src={Viberr}
-          link='https://github.com/LokmanKhodziri/Fullstack_Blog'
-          h3='Fullstack Blog'
-          p='A full-stack blog platform built with Node.js, Express, and MongoDB. Features include user authentication, CRUD operations for blog posts, responsive design, and RESTful API architecture. Implemented secure password hashing and JWT authentication.'
-        />
-        <ProjectsCard
-          src={FreshBurger}
-          link='https://github.com/LokmanKhodziri/anime-webs'
-          h3='Anime Website'
-          p='An interactive anime discovery platform built with React and RapidAPI. Features include anime search, detailed information display, genre filtering, and responsive design. Implemented modern UI/UX practices with smooth animations and transitions.'
-        />
-        <ProjectsCard
-          src={Fitlift}
-          link='https://github.com/LokmanKhodziri/capstone_project'
-          h3='ExpenseTracker (Capstone Project)'
-          p='A full-stack expense tracking application built with a Spring Boot backend and React frontend. Implements JWT authentication, secure password hashing, and persistent data storage with MySQL. Containerized with Docker and orchestrated via Docker Compose for easy local development.'
-        />
+        {projects.map((project, index) => (
+          <Reveal
+            key={project.title}
+            delayMs={index * 60}
+            className={project.featured ? styles.featuredSlot : undefined}
+          >
+            <ProjectsCard {...project} />
+          </Reveal>
+        ))}
       </div>
     </section>
   );
