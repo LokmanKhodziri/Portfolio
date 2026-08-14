@@ -44,7 +44,7 @@ portfolio/
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js 24 (see `.nvmrc`)
 - npm or yarn
 
 ### Installation
