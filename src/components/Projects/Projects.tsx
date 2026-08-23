@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ProjectsStyles.module.css";
 import MusafirGo from "../../assets/musafirgo.png";
+import ServiceFlow from "../../assets/service-flow.svg";
 import Bebilis from "../../assets/bebilis.png";
 import CariPart from "../../assets/caripart.png";
 import ProjectsCard from "../common/ProjectsCard";
@@ -16,6 +17,15 @@ const projects = [
       "Muslim-friendly travel planner with day-by-day itineraries, maps, prayer times, and nearby halal spots. Next.js frontend backed by an Express + Prisma API with Google/GitHub OAuth.",
     stack: ["Next.js", "Express", "Prisma", "OAuth"],
     featured: true,
+  },
+  {
+    src: ServiceFlow,
+    link: "https://github.com/LokmanKhodziri/service-flow",
+    title: "ServiceFlow",
+    role: "Fullstack · SaaS",
+    summary:
+      "Operations platform for field-service businesses — customers, scheduled jobs, invoice PDFs, Stripe Checkout, and multi-tenant RBAC. NestJS API with a Next.js shell, PostgreSQL via Prisma, and unit + e2e tests.",
+    stack: ["NestJS", "Next.js", "Prisma", "Stripe"],
   },
   {
     src: Bebilis,

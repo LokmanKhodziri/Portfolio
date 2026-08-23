@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-label="ServiceFlow dashboard preview">
+  <rect width="1280" height="800" fill="#f4f1ea"/>
+  <rect width="240" height="800" fill="#16382f"/>
+  <text x="32" y="56" fill="#f4f1ea" font-family="Segoe UI, system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="2">SERVICEFLOW</text>
+  <text x="32" y="120" fill="#c8ddd7" font-family="Segoe UI, system-ui, sans-serif" font-size="16">Dashboard</text>
+  <text x="32" y="156" fill="#9ebdb4" font-family="Segoe UI, system-ui, sans-serif" font-size="16">Customers</text>
+  <text x="32" y="192" fill="#9ebdb4" font-family="Segoe UI, system-ui, sans-serif" font-size="16">Jobs</text>
+  <text x="32" y="228" fill="#9ebdb4" font-family="Segoe UI, system-ui, sans-serif" font-size="16">Invoices</text>
+  <text x="32" y="264" fill="#9ebdb4" font-family="Segoe UI, system-ui, sans-serif" font-size="16">Staff</text>
+  <text x="280" y="72" fill="#1c1914" font-family="Segoe UI, system-ui, sans-serif" font-size="34" font-weight="700">Today</text>
+  <text x="280" y="108" fill="#6b6458" font-family="Segoe UI, system-ui, sans-serif" font-size="16">2026-08-23 · Asia/Kuala_Lumpur</text>
+  <rect x="280" y="140" width="280" height="120" rx="10" fill="#fffdf8" stroke="#ddd4c4"/>
+  <text x="304" y="176" fill="#6b6458" font-family="Segoe UI, system-ui, sans-serif" font-size="14">Customers</text>
+  <text x="304" y="224" fill="#1c1914" font-family="Segoe UI, system-ui, sans-serif" font-size="36" font-weight="700">48</text>
+  <rect x="580" y="140" width="280" height="120" rx="10" fill="#fffdf8" stroke="#ddd4c4"/>
+  <text x="604" y="176" fill="#6b6458" font-family="Segoe UI, system-ui, sans-serif" font-size="14">In progress</text>
+  <text x="604" y="224" fill="#1c1914" font-family="Segoe UI, system-ui, sans-serif" font-size="36" font-weight="700">6</text>
+  <rect x="880" y="140" width="320" height="120" rx="10" fill="#fffdf8" stroke="#ddd4c4"/>
+  <text x="904" y="176" fill="#6b6458" font-family="Segoe UI, system-ui, sans-serif" font-size="14">Outstanding</text>
+  <text x="904" y="224" fill="#1c1914" font-family="Segoe UI, system-ui, sans-serif" font-size="36" font-weight="700">RM 4,280</text>
+  <text x="280" y="320" fill="#1c1914" font-family="Segoe UI, system-ui, sans-serif" font-size="24" font-weight="700">Upcoming</text>
+  <rect x="280" y="340" width="920" height="180" rx="10" fill="#fffdf8" stroke="#ddd4c4"/>
+  <text x="304" y="392" fill="#0f5c4c" font-family="Segoe UI, system-ui, sans-serif" font-size="18" font-weight="600">AC servicing  Taman Melati</text>
+  <text x="304" y="422" fill="#6b6458" font-family="Segoe UI, system-ui, sans-serif" font-size="15">Siti Aminah · SCHEDULED</text>
+  <text x="304" y="468" fill="#0f5c4c" font-family="Segoe UI, system-ui, sans-serif" font-size="18" font-weight="600">Plumbing repair  Shah Alam</text>
+  <text x="304" y="498" fill="#6b6458" font-family="Segoe UI, system-ui, sans-serif" font-size="15">Ahmad Rizal · IN_PROGRESS</text>
+  <text x="280" y="580" fill="#1c1914" font-family="Segoe UI, system-ui, sans-serif" font-size="24" font-weight="700">Invoices</text>
+  <rect x="280" y="600" width="920" height="140" rx="10" fill="#fffdf8" stroke="#ddd4c4"/>
+  <text x="304" y="652" fill="#0f5c4c" font-family="Segoe UI, system-ui, sans-serif" font-size="18" font-weight="600">INV-0007 · RM 350.00</text>
+  <text x="304" y="682" fill="#6b6458" font-family="Segoe UI, system-ui, sans-serif" font-size="15">Issued · Pay online via Stripe</text>
+</svg>
