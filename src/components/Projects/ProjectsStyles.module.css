@@ -110,29 +110,10 @@
 .projectsContainer :global(.projectStack) {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem 0.85rem;
+  gap: 0.4rem;
   list-style: none;
   margin: 0.35rem 0 0;
   padding: 0;
-}
-
-.projectsContainer :global(.projectStack li) {
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  font-variant-numeric: tabular-nums;
-}
-
-.projectsContainer :global(.projectStack li::before) {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  margin-right: 0.45rem;
-  margin-bottom: 0.15rem;
-  border-radius: 50%;
-  background: var(--accent);
-  vertical-align: middle;
 }
 
 @media (min-width: 720px) {

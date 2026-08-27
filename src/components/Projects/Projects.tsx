@@ -15,7 +15,7 @@ const projects = [
     role: "Fullstack · Live product",
     summary:
       "Muslim-friendly travel planner with day-by-day itineraries, maps, prayer times, and nearby halal spots. Next.js frontend backed by an Express + Prisma API with Google/GitHub OAuth.",
-    stack: ["Next.js", "Express", "Prisma", "OAuth"],
+    stack: ["Next.js", "Express.js", "Prisma", "OAuth"],
     featured: true,
   },
   {

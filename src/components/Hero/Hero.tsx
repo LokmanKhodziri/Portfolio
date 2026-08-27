@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./HeroStyles.module.css";
 import heroImg from "../../assets/hero-img.png";
+import heroAlt from "../../assets/hero-alt.png";
 import sun from "../../assets/sun.svg";
 import moon from "../../assets/moon.svg";
 import githubLight from "../../assets/github-light.svg";
@@ -9,6 +10,9 @@ import linkedinLight from "../../assets/linkedin-light.svg";
 import linkedinDark from "../../assets/linkedin-dark.svg";
 import CV from "../../assets/Lokman_Resume_V8.pdf";
 import { useTheme } from "../common/useTheme";
+import TechBadge from "../common/TechBadge";
+import PixelTransition from "../common/PixelTransition";
+import { techCatalog } from "../../data/tech";
 
 const Hero: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
@@ -61,23 +65,52 @@ const Hero: React.FC = () => {
       </nav>
 
       <section id="hero" className={styles.hero}>
-        <div className={styles.heroMedia} aria-hidden="true">
-          <img
-            className={styles.heroImage}
-            src={heroImg}
-            alt=""
-          />
-          <div className={styles.heroMediaShade} />
-        </div>
-
         <div className={styles.heroContent}>
-          <p className={styles.brand}>Lokman Khodziri</p>
+          <div className={styles.identity}>
+            <PixelTransition
+              className={styles.portrait}
+              firstSrc={heroImg}
+              secondSrc={heroAlt}
+              alt="Portrait of Lokman Khodziri"
+              secondAlt="Alternate portrait of Lokman Khodziri"
+            />
+            <div className={styles.identityText}>
+              <p className={styles.brand}>Lokman Khodziri</p>
+              <div className={styles.identityLinks}>
+                <a
+                  href="https://github.com/lokmankhodziri"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <img src={githubIcon} alt="" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/lokmankhodziri/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <img src={linkedinIcon} alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
           <h1 className={styles.headline}>
             Fullstack apps from API to interface.
           </h1>
           <p className={styles.support}>
-            I build and ship web products end to end — Node.js and Express
-            backends, React frontends, databases, auth, and production deploys.
+            I build and ship web products end to end —{" "}
+            <span className={styles.inlineTech}>
+              <TechBadge tech={techCatalog["Next.js"]} variant="inline" />
+              <TechBadge tech={techCatalog.React} variant="inline" />
+            </span>{" "}
+            frontends,{" "}
+            <span className={styles.inlineTech}>
+              <TechBadge tech={techCatalog.NestJS} variant="inline" />
+              <TechBadge tech={techCatalog["Node.js"]} variant="inline" />
+            </span>{" "}
+            backends, and production deploys.
           </p>
           <div className={styles.ctaGroup}>
             <a href="#projects" className={styles.primaryButton}>

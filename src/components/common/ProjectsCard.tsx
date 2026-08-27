@@ -1,4 +1,6 @@
 import React from "react";
+import TechBadge from "./TechBadge";
+import { resolveTech } from "../../data/tech";
 
 interface ProjectsCardProps {
   src: string;
@@ -41,7 +43,9 @@ const ProjectsCard: React.FC<ProjectsCardProps> = ({
         <p>{summary}</p>
         <ul className="projectStack">
           {stack.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}>
+              <TechBadge tech={resolveTech(item)} variant="compact" />
+            </li>
           ))}
         </ul>
       </div>

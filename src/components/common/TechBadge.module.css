@@ -1,0 +1,78 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--text);
+  background: var(--bg-elevated);
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  vertical-align: middle;
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+.badge:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--text-muted) 55%, var(--border));
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  background-color: var(--tech-color);
+  -webkit-mask: var(--tech-icon) center / contain no-repeat;
+  mask: var(--tech-icon) center / contain no-repeat;
+}
+
+.invert {
+  background-color: var(--tech-color);
+}
+
+:global([data-theme="dark"]) .invert {
+  background-color: var(--text);
+}
+
+.inline {
+  gap: 0.4rem;
+  margin: 0 0.12em;
+  padding: 0.22rem 0.5rem;
+  font-size: 0.82em;
+  border-radius: 6px;
+}
+
+.inline .icon {
+  width: 0.85rem;
+  height: 0.85rem;
+}
+
+.compact {
+  gap: 0.35rem;
+  padding: 0.28rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 999px;
+}
+
+.compact .icon {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.plain {
+  /* text-only fallback when no icon file exists */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge:hover {
+    transform: none;
+  }
+}

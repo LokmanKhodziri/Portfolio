@@ -1,5 +1,5 @@
 .container {
-  border-top: 1px solid var(--border);
+  border-top: 1px dashed var(--border);
   padding: 2.5rem 1.25rem 2.75rem;
   background: var(--bg-deep);
 }
@@ -9,7 +9,14 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  gap: 1.35rem;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
   gap: 0.35rem;
+  text-align: center;
 }
 
 .brand {
@@ -26,14 +33,92 @@
 }
 
 .legal {
-  margin-top: 0.75rem;
+  margin-top: 0.55rem;
   font-size: 0.8rem;
   color: var(--text-muted);
   opacity: 0.85;
 }
 
+.visits {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.avatars {
+  display: flex;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 2px solid var(--bg-deep);
+  box-shadow: var(--shadow);
+  background: var(--bg-elevated);
+}
+
+.avatar + .avatar {
+  margin-left: -0.4rem;
+}
+
+.avatarMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #f8f9fb;
+}
+
+.avatarNext {
+  background: #14171c;
+}
+
+.avatarNest {
+  background: #e0234e;
+}
+
+.avatarNode {
+  background: #5fa04e;
+  font-size: 0.62rem;
+}
+
+.count {
+  margin: 0;
+  padding: 0.3rem 0.8rem;
+  border: 1px dashed var(--border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  white-space: nowrap;
+}
+
 @media (min-width: 720px) {
   .container {
     padding-inline: 1.75rem;
+  }
+
+  .inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .meta {
+    text-align: left;
+  }
+
+  .visits {
+    justify-content: flex-end;
+    padding-bottom: 0.15rem;
   }
 }

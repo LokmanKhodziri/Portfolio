@@ -1,50 +1,110 @@
+import { useState } from "react";
 import styles from "./SkillStyles.module.css";
 import Reveal from "../common/Reveal";
+import TechBadge from "../common/TechBadge";
+import { marqueeRows, skillGroups } from "../../data/tech";
+import type { Tech } from "../../data/tech";
 
-const skills = {
-  Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Redux", "Chakra UI"],
-  Backend: ["Node.js", "Express.js", "Spring Boot", "REST APIs", "JWT Auth"],
-  Data: ["MongoDB", "PostgreSQL", "MySQL", "Prisma", "Firebase", "Neon"],
-  "Tools & delivery": [
-    "Git",
-    "Docker",
-    "Docker Compose",
-    "GitHub Actions",
-    "CI/CD",
-    "Jenkins",
-  ],
-};
+function MarqueeRow({
+  items,
+  reverse,
+}: {
+  items: Tech[];
+  reverse?: boolean;
+}) {
+  return (
+    <div className={styles.marquee}>
+      <div
+        className={`${styles.track} ${reverse ? styles.trackReverse : ""}`}
+        aria-hidden="true"
+      >
+        {[0, 1].map((copy) =>
+          items.map((tech) => (
+            <TechBadge key={`${copy}-${tech.name}`} tech={tech} />
+          ))
+        )}
+      </div>
+    </div>
+  );
+}
 
 function Skills() {
+  const [grouped, setGrouped] = useState(false);
+
   return (
     <section id="skills" className={styles.container}>
       <Reveal>
-        <div className="sectionHeader">
-          <p className="sectionEyebrow">Capabilities</p>
-          <h2 className="sectionTitle">Stack I work across</h2>
-          <p className="sectionSubtitle">
-            Comfortable owning the full path — UI, API, data, and how it gets
-            into production.
-          </p>
+        <div className={styles.header}>
+          <h2 className={styles.title}>Technologies</h2>
+          <div className={styles.headerActions}>
+            <button
+              type="button"
+              className={styles.viewToggle}
+              onClick={() => setGrouped((value) => !value)}
+              title={grouped ? "Show animated rows" : "Show grouped technologies"}
+              aria-pressed={grouped}
+            >
+              {grouped ? (
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <rect x="1" y="2" width="14" height="2.2" rx="1" />
+                  <rect x="1" y="7" width="14" height="2.2" rx="1" />
+                  <rect x="1" y="12" width="14" height="2.2" rx="1" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <rect x="1" y="1" width="6" height="6" rx="1.2" />
+                  <rect x="9" y="1" width="6" height="6" rx="1.2" />
+                  <rect x="1" y="9" width="6" height="6" rx="1.2" />
+                  <rect x="9" y="9" width="6" height="6" rx="1.2" />
+                </svg>
+              )}
+            </button>
+            <button
+              type="button"
+              className={styles.viewAll}
+              onClick={() => setGrouped((value) => !value)}
+            >
+              {grouped ? "Show less" : "View all"}
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
         </div>
       </Reveal>
 
-      <div className={styles.skillCategories}>
-        {Object.entries(skills).map(([category, skillList], index) => (
-          <Reveal key={category} delayMs={index * 70}>
-            <div className={styles.skillCategory}>
-              <h3>{category}</h3>
-              <ul className={styles.skillList}>
-                {skillList.map((skill) => (
-                  <li key={skill} className={styles.skillItem}>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-        ))}
-      </div>
+      <ul className={styles.srOnly}>
+        {skillGroups.flatMap((group) =>
+          group.items.map((tech) => (
+            <li key={tech.name}>{tech.name}</li>
+          ))
+        )}
+      </ul>
+
+      {grouped ? (
+        <div className={styles.grouped}>
+          {skillGroups.map((group, index) => (
+            <Reveal key={group.title} delayMs={index * 50}>
+              <div className={styles.group}>
+                <p className={styles.groupTitle}>{group.title}</p>
+                <div className={styles.groupPills}>
+                  {group.items.map((tech) => (
+                    <TechBadge key={tech.name} tech={tech} />
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      ) : (
+        <div className={styles.marqueeStack}>
+          {marqueeRows.map((row, index) => (
+            <MarqueeRow
+              key={index}
+              items={row}
+              reverse={index % 2 === 1}
+            />
+          ))}
+        </div>
+      )}
     </section>
   );
 }

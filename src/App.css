@@ -10,7 +10,7 @@
   --accent-soft: rgba(11, 110, 106, 0.1);
   --btn-text: #f8f9fb;
   --shadow: 0 1px 0 rgba(20, 23, 28, 0.04);
-  --max-width: 1120px;
+  --max-width: 48rem;
   --font-display: "Syne", sans-serif;
   --font-body: "Figtree", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -89,6 +89,7 @@ img {
   max-width: var(--max-width);
   margin: 0 auto 2.5rem;
   padding: 0 1.25rem;
+  text-align: center;
 }
 
 .sectionEyebrow {
@@ -112,9 +113,16 @@ img {
 
 .sectionSubtitle {
   margin-top: 0.75rem;
+  margin-inline: auto;
   max-width: 36rem;
   font-size: 1.05rem;
   color: var(--text-muted);
+}
+
+@media (min-width: 720px) {
+  .sectionHeader {
+    padding-inline: 1.75rem;
+  }
 }
 
 .reveal {
