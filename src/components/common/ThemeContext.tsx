@@ -1,63 +1,49 @@
-import React, { createContext, useEffect, useState, ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  type ReactNode,
+} from "react";
 
-/**
- * Interface for the theme context value
- * @interface ThemeContextType
- */
 interface ThemeContextType {
-    /** Current theme ('light' or 'dark') */
-    theme: string;
-    /** Function to toggle between light and dark themes */
-    toggleTheme: () => void;
+  theme: string;
+  toggleTheme: () => void;
 }
 
-/**
- * Props interface for the ThemeProvider component
- * @interface ThemeProviderProps
- */
 interface ThemeProviderProps {
-    /** Child components to be wrapped by the theme provider */
-    children: ReactNode;
+  children: ReactNode;
 }
 
-/**
- * Theme Context
- * Creates a context for managing the application's theme state
- */
-export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+// eslint-disable-next-line react-refresh/only-export-components
+export const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined
+);
 
-/**
- * Theme Provider Component
- * 
- * This component:
- * 1. Manages the theme state (light/dark)
- * 2. Persists theme preference in localStorage
- * 3. Applies theme to the document body
- * 4. Provides theme context to all child components
- * 
- * @param {ThemeProviderProps} props - Component props
- * @returns {JSX.Element} Theme provider wrapper
- */
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-    // Initialize theme from localStorage or default to light
-    const [theme, setTheme] = useState<string>(
-        () => localStorage.getItem('theme') || 'light'
-    );
+function currentTheme() {
+  return document.body.getAttribute("data-theme") === "dark" ? "dark" : "light";
+}
 
-    // Update theme in localStorage and apply to body when theme changes
-    useEffect(() => {
-        document.body.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    }, [theme]);
+function applyTheme(theme: string) {
+  document.body.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+}
 
-    // Toggle between light and dark themes
-    const toggleTheme = () => {
-        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-    };
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  useLayoutEffect(() => {
+    applyTheme(localStorage.getItem("theme") === "dark" ? "dark" : "light");
+  }, []);
 
-    return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            {children}
-        </ThemeContext.Provider>
-    );
-}; 
+  const toggleTheme = useCallback(() => {
+    applyTheme(currentTheme() === "light" ? "dark" : "light");
+  }, []);
+
+  const value = useMemo(
+    () => ({ theme: currentTheme(), toggleTheme }),
+    [toggleTheme]
+  );
+
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
+};

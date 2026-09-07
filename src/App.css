@@ -55,10 +55,16 @@ body {
   background-attachment: fixed;
 }
 
-[data-theme="dark"] body {
+body[data-theme="dark"] {
   background-image:
     linear-gradient(rgba(238, 241, 244, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(238, 241, 244, 0.03) 1px, transparent 1px);
+}
+
+@media (pointer: coarse) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
 #root {

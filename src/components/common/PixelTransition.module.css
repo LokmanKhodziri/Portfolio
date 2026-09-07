@@ -10,6 +10,9 @@
   cursor: pointer;
   color: var(--text);
   flex-shrink: 0;
+  contain: layout paint;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .card:focus-visible {
@@ -30,28 +33,69 @@
 
 .second {
   z-index: 2;
+  opacity: 0;
 }
 
-.pixels {
+.card.on .second {
+  opacity: 1;
+}
+
+.flash {
   position: absolute;
   inset: 0;
   z-index: 3;
   pointer-events: none;
-}
-
-.pixel {
-  position: absolute;
-  display: block;
-  background: currentColor;
   opacity: 0;
+  background-color: var(--bg-elevated);
+  background-image: repeating-conic-gradient(
+    currentColor 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 25% 25%;
 }
 
-.pixelOn {
-  opacity: 1;
+@media (pointer: coarse) {
+  .card.on .flash {
+    animation-duration: 0.22s;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover .second {
+    opacity: 1;
+  }
+
+  .card:hover .flash {
+    animation: pixelBurst 0.38s steps(6) both;
+  }
+}
+
+.card.on .flash {
+  animation: pixelBurst 0.38s steps(6) both;
+}
+
+@keyframes pixelBurst {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  28% {
+    opacity: 0.15;
+  }
+  44% {
+    opacity: 0.85;
+  }
+  62% {
+    opacity: 0.2;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pixel {
-    display: none;
+  .card:hover .flash,
+  .card.on .flash {
+    animation: none;
   }
 }

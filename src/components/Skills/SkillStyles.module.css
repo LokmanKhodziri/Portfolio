@@ -40,6 +40,7 @@
   color: var(--text-muted);
   cursor: pointer;
   border-radius: 8px;
+  touch-action: manipulation;
   transition: color 0.2s var(--ease), background 0.2s var(--ease);
 }
 
@@ -68,6 +69,7 @@
   font-weight: 500;
   cursor: pointer;
   border-radius: 8px;
+  touch-action: manipulation;
   transition: color 0.2s var(--ease), background 0.2s var(--ease);
 }
 
@@ -127,6 +129,12 @@
   gap: 0.7rem;
   padding-right: 0.7rem;
   animation: scrollLeft 72s linear infinite;
+  will-change: transform;
+}
+
+.marquee.offscreen .track {
+  animation-play-state: paused;
+  will-change: auto;
 }
 
 .trackReverse {

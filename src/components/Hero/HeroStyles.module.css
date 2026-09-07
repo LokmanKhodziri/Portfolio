@@ -12,6 +12,13 @@
   border-bottom: 1px solid var(--border);
 }
 
+@media (pointer: coarse) {
+  .nav {
+    backdrop-filter: none;
+    background: var(--bg);
+  }
+}
+
 .navInner {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -66,7 +73,20 @@
   background: transparent;
   border-radius: 8px;
   cursor: pointer;
+  touch-action: manipulation;
   transition: background 0.2s var(--ease);
+}
+
+.iconDark {
+  display: none;
+}
+
+:global(body[data-theme="dark"]) .iconLight {
+  display: none;
+}
+
+:global(body[data-theme="dark"]) .iconDark {
+  display: block;
 }
 
 .iconLink:hover,

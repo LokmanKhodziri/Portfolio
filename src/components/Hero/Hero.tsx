@@ -1,4 +1,8 @@
-import React from "react";
+import { useRef, type PointerEvent } from "react";
+import { useTheme } from "../common/useTheme";
+import TechBadge from "../common/TechBadge";
+import PixelTransition from "../common/PixelTransition";
+import { techCatalog } from "../../data/tech";
 import styles from "./HeroStyles.module.css";
 import sun from "../../assets/sun.svg";
 import moon from "../../assets/moon.svg";
@@ -7,17 +11,41 @@ import githubDark from "../../assets/github-dark.svg";
 import linkedinLight from "../../assets/linkedin-light.svg";
 import linkedinDark from "../../assets/linkedin-dark.svg";
 import CV from "../../assets/Lokman_Resume_V8.pdf";
-import { useTheme } from "../common/useTheme";
-import TechBadge from "../common/TechBadge";
-import PixelTransition from "../common/PixelTransition";
-import { techCatalog } from "../../data/tech";
 
-const Hero: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+function ThemeIcons({
+  light,
+  dark,
+}: {
+  light: string;
+  dark: string;
+}) {
+  return (
+    <>
+      <img className={styles.iconLight} src={light} alt="" />
+      <img className={styles.iconDark} src={dark} alt="" />
+    </>
+  );
+}
 
-  const themeIcon = theme === "light" ? sun : moon;
-  const githubIcon = theme === "light" ? githubLight : githubDark;
-  const linkedinIcon = theme === "light" ? linkedinLight : linkedinDark;
+const Hero = () => {
+  const { toggleTheme } = useTheme();
+  const ignoreThemeClick = useRef(false);
+
+  const handleThemePointerDown = (
+    event: PointerEvent<HTMLButtonElement>
+  ) => {
+    if (event.button !== 0) return;
+    ignoreThemeClick.current = true;
+    toggleTheme();
+  };
+
+  const handleThemeClick = () => {
+    if (ignoreThemeClick.current) {
+      ignoreThemeClick.current = false;
+      return;
+    }
+    toggleTheme();
+  };
 
   return (
     <header className={styles.wrapper}>
@@ -39,7 +67,7 @@ const Hero: React.FC = () => {
               className={styles.iconLink}
               aria-label="GitHub"
             >
-              <img src={githubIcon} alt="" />
+              <ThemeIcons light={githubLight} dark={githubDark} />
             </a>
             <a
               href="https://www.linkedin.com/in/lokmankhodziri/"
@@ -48,15 +76,16 @@ const Hero: React.FC = () => {
               className={styles.iconLink}
               aria-label="LinkedIn"
             >
-              <img src={linkedinIcon} alt="" />
+              <ThemeIcons light={linkedinLight} dark={linkedinDark} />
             </a>
             <button
               type="button"
               className={styles.themeToggle}
-              onClick={toggleTheme}
+              onPointerDown={handleThemePointerDown}
+              onClick={handleThemeClick}
               aria-label="Toggle color mode"
             >
-              <img src={themeIcon} alt="" />
+              <ThemeIcons light={sun} dark={moon} />
             </button>
           </div>
         </div>
@@ -81,7 +110,7 @@ const Hero: React.FC = () => {
                   rel="noopener noreferrer"
                   aria-label="GitHub"
                 >
-                  <img src={githubIcon} alt="" />
+                  <ThemeIcons light={githubLight} dark={githubDark} />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/lokmankhodziri/"
@@ -89,7 +118,7 @@ const Hero: React.FC = () => {
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
                 >
-                  <img src={linkedinIcon} alt="" />
+                  <ThemeIcons light={linkedinLight} dark={linkedinDark} />
                 </a>
               </div>
             </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { startTransition, useEffect, useRef, useState } from "react";
 import styles from "./SkillStyles.module.css";
 import Reveal from "../common/Reveal";
 import TechBadge from "../common/TechBadge";
@@ -12,8 +12,25 @@ function MarqueeRow({
   items: Tech[];
   reverse?: boolean;
 }) {
+  const rowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = rowRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        el.classList.toggle(styles.offscreen, !entry.isIntersecting);
+      },
+      { rootMargin: "80px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className={styles.marquee}>
+    <div ref={rowRef} className={styles.marquee}>
       <div
         className={`${styles.track} ${reverse ? styles.trackReverse : ""}`}
         aria-hidden="true"
@@ -31,6 +48,12 @@ function MarqueeRow({
 function Skills() {
   const [grouped, setGrouped] = useState(false);
 
+  const toggleGrouped = () => {
+    startTransition(() => {
+      setGrouped((value) => !value);
+    });
+  };
+
   return (
     <section id="skills" className={styles.container}>
       <Reveal>
@@ -40,7 +63,7 @@ function Skills() {
             <button
               type="button"
               className={styles.viewToggle}
-              onClick={() => setGrouped((value) => !value)}
+              onClick={toggleGrouped}
               title={grouped ? "Show animated rows" : "Show grouped technologies"}
               aria-pressed={grouped}
             >
@@ -62,7 +85,7 @@ function Skills() {
             <button
               type="button"
               className={styles.viewAll}
-              onClick={() => setGrouped((value) => !value)}
+              onClick={toggleGrouped}
             >
               {grouped ? "Show less" : "View all"}
               <span aria-hidden="true">›</span>
@@ -81,17 +104,15 @@ function Skills() {
 
       {grouped ? (
         <div className={styles.grouped}>
-          {skillGroups.map((group, index) => (
-            <Reveal key={group.title} delayMs={index * 50}>
-              <div className={styles.group}>
-                <p className={styles.groupTitle}>{group.title}</p>
-                <div className={styles.groupPills}>
-                  {group.items.map((tech) => (
-                    <TechBadge key={tech.name} tech={tech} />
-                  ))}
-                </div>
+          {skillGroups.map((group) => (
+            <div key={group.title} className={styles.group}>
+              <p className={styles.groupTitle}>{group.title}</p>
+              <div className={styles.groupPills}>
+                {group.items.map((tech) => (
+                  <TechBadge key={tech.name} tech={tech} />
+                ))}
               </div>
-            </Reveal>
+            </div>
           ))}
         </div>
       ) : (
