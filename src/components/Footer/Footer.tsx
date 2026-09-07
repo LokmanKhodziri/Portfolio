@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import styles from "./FooterStyles.module.css";
-import heroImg from "../../assets/hero-img.png";
 
 const CACHE_KEY = "visitor_count_cache";
 const CACHE_TTL_MS = 5 * 60 * 1000;
@@ -69,7 +68,7 @@ const Footer: React.FC = () => {
 
         <div className={styles.visits}>
           <div className={styles.avatars} aria-hidden="true">
-            <img className={styles.avatar} src={heroImg} alt="" />
+            <img className={styles.avatar} src="/hero.webp" alt="" />
             <span className={`${styles.avatar} ${styles.avatarMark} ${styles.avatarNext}`}>
               N
             </span>

@@ -1,19 +1,22 @@
-import React from "react";
+import { lazy, Suspense } from "react";
 import "./App.css";
-import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
-import Projects from "./components/Projects/Projects";
-import Skills from "./components/Skills/Skills";
 
-const App: React.FC = () => {
+const Projects = lazy(() => import("./components/Projects/Projects"));
+const Skills = lazy(() => import("./components/Skills/Skills"));
+const Contact = lazy(() => import("./components/Contact/Contact"));
+
+const App = () => {
   return (
     <>
       <Hero />
       <main>
-        <Projects />
-        <Skills />
-        <Contact />
+        <Suspense fallback={null}>
+          <Projects />
+          <Skills />
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </>

@@ -30,7 +30,14 @@ const ProjectsCard: React.FC<ProjectsCardProps> = ({
       data-featured={featured || undefined}
     >
       <div className="projectMedia">
-        <img src={src} alt={`${title} preview`} />
+        <img
+          src={src}
+          alt={`${title} preview`}
+          width={960}
+          height={540}
+          loading="lazy"
+          decoding="async"
+        />
       </div>
       <div className="projectBody">
         <div className="projectMeta">
