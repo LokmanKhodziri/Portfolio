@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "./HeroStyles.module.css";
-import heroImg from "../../assets/hero-img.png";
-import heroAlt from "../../assets/hero-alt.png";
 import sun from "../../assets/sun.svg";
 import moon from "../../assets/moon.svg";
 import githubLight from "../../assets/github-light.svg";
@@ -69,8 +67,8 @@ const Hero: React.FC = () => {
           <div className={styles.identity}>
             <PixelTransition
               className={styles.portrait}
-              firstSrc={heroImg}
-              secondSrc={heroAlt}
+              firstSrc="/hero.webp"
+              secondSrc="/hero-alt.webp"
               alt="Portrait of Lokman Khodziri"
               secondAlt="Alternate portrait of Lokman Khodziri"
             />

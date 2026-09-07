@@ -31,6 +31,7 @@ const PixelTransition = ({
 }: PixelTransitionProps) => {
   const [active, setActive] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
+  const [armed, setArmed] = useState(false);
   const pixelLayer = useRef<HTMLSpanElement>(null);
   const runId = useRef(0);
   const target = useRef(false);
@@ -49,7 +50,7 @@ const PixelTransition = ({
 
   const pixels = () =>
     pixelLayer.current
-      ? Array.from(pixelLayer.current.children) as HTMLElement[]
+      ? (Array.from(pixelLayer.current.children) as HTMLElement[])
       : [];
 
   useEffect(() => {
@@ -109,8 +110,26 @@ const PixelTransition = ({
     [durationMs]
   );
 
-  const showSecond = () => animateTo(true);
-  const showFirst = () => animateTo(false);
+  const pending = useRef<boolean | null>(null);
+
+  const armThen = (next: boolean) => {
+    if (!armed) {
+      pending.current = next;
+      setArmed(true);
+      return;
+    }
+    animateTo(next);
+  };
+
+  useEffect(() => {
+    if (!armed || pending.current === null) return;
+    const next = pending.current;
+    pending.current = null;
+    animateTo(next);
+  }, [armed, animateTo]);
+
+  const showSecond = () => armThen(true);
+  const showFirst = () => armThen(false);
 
   return (
     <button
@@ -128,29 +147,40 @@ const PixelTransition = ({
         className={styles.image}
         src={firstSrc}
         alt={active ? "" : alt}
+        width={320}
+        height={320}
+        decoding="async"
+        fetchPriority="high"
         aria-hidden={active}
       />
-      <img
-        className={`${styles.image} ${styles.second}`}
-        src={secondSrc}
-        alt={active ? secondAlt : ""}
-        aria-hidden={!active}
-        style={{ display: active ? "block" : "none" }}
-      />
-      <span className={styles.pixels} ref={pixelLayer} aria-hidden="true">
-        {cells.map((index) => (
-          <span
-            key={index}
-            className={styles.pixel}
-            style={{
-              width: `${100 / gridSize}%`,
-              height: `${100 / gridSize}%`,
-              left: `${(index % gridSize) * (100 / gridSize)}%`,
-              top: `${Math.floor(index / gridSize) * (100 / gridSize)}%`,
-            }}
-          />
-        ))}
-      </span>
+      {armed ? (
+        <img
+          className={`${styles.image} ${styles.second}`}
+          src={secondSrc}
+          alt={active ? secondAlt : ""}
+          width={320}
+          height={320}
+          decoding="async"
+          aria-hidden={!active}
+          style={{ display: active ? "block" : "none" }}
+        />
+      ) : null}
+      {armed ? (
+        <span className={styles.pixels} ref={pixelLayer} aria-hidden="true">
+          {cells.map((index) => (
+            <span
+              key={index}
+              className={styles.pixel}
+              style={{
+                width: `${100 / gridSize}%`,
+                height: `${100 / gridSize}%`,
+                left: `${(index % gridSize) * (100 / gridSize)}%`,
+                top: `${Math.floor(index / gridSize) * (100 / gridSize)}%`,
+              }}
+            />
+          ))}
+        </span>
+      ) : null}
     </button>
   );
 };

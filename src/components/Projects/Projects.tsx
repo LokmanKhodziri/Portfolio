@@ -1,15 +1,11 @@
 import React from "react";
 import styles from "./ProjectsStyles.module.css";
-import MusafirGo from "../../assets/musafirgo.png";
-import ServiceFlow from "../../assets/service-flow.png";
-import Bebilis from "../../assets/bebilis.png";
-import CariPart from "../../assets/caripart.png";
 import ProjectsCard from "../common/ProjectsCard";
 import Reveal from "../common/Reveal";
 
 const projects = [
   {
-    src: MusafirGo,
+    src: "/projects/musafirgo.webp",
     link: "https://musafirgo.vercel.app/",
     title: "Musafir-Go",
     role: "Fullstack · Live product",
@@ -19,7 +15,7 @@ const projects = [
     featured: true,
   },
   {
-    src: ServiceFlow,
+    src: "/projects/service-flow.webp",
     link: "https://github.com/LokmanKhodziri/service-flow",
     title: "ServiceFlow",
     role: "Fullstack · SaaS",
@@ -28,7 +24,7 @@ const projects = [
     stack: ["NestJS", "Next.js", "Prisma", "Stripe"],
   },
   {
-    src: Bebilis,
+    src: "/projects/bebilis.webp",
     link: "https://demo-bebilis-yard.vercel.app/",
     title: "Bebilis Yard Demo",
     role: "Frontend · Demo",
@@ -37,7 +33,7 @@ const projects = [
     stack: ["React", "Responsive UI"],
   },
   {
-    src: CariPart,
+    src: "/projects/caripart.webp",
     link: "https://caripart.vercel.app/",
     title: "CariPart",
     role: "Fullstack · Ongoing",
