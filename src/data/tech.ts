@@ -69,9 +69,35 @@ export const techCatalog: Record<string, Tech> = {
     color: "#181717",
     invertInDark: true,
   },
+  Expo: {
+    name: "Expo",
+    slug: "expo",
+    color: "#000020",
+    invertInDark: true,
+  },
+  "React Native": { name: "React Native", slug: "react", color: "#61DAFB" },
+  SQLite: { name: "SQLite", slug: "sqlite", color: "#003B57" },
+  Supabase: { name: "Supabase", slug: "supabase", color: "#3FCF8E" },
+  Zustand: { name: "Zustand", slug: "", color: "#4338CA" },
+  Vitest: { name: "Vitest", slug: "vitest", color: "#729B1B" },
+  "TanStack Query": {
+    name: "TanStack Query",
+    slug: "reactquery",
+    color: "#FF4154",
+  },
+  "Socket.IO": {
+    name: "Socket.IO",
+    slug: "socketdotio",
+    color: "#010101",
+    invertInDark: true,
+  },
 };
 
 export const skillGroups: { title: string; items: Tech[] }[] = [
+  {
+    title: "Mobile",
+    items: [techCatalog["React Native"], techCatalog.Expo],
+  },
   {
     title: "Frontend",
     items: [
@@ -80,7 +106,8 @@ export const skillGroups: { title: string; items: Tech[] }[] = [
       techCatalog.TypeScript,
       techCatalog["Tailwind CSS"],
       techCatalog.Vite,
-      techCatalog["Chakra UI"],
+      techCatalog.Zustand,
+      techCatalog["TanStack Query"],
     ],
   },
   {
@@ -89,20 +116,19 @@ export const skillGroups: { title: string; items: Tech[] }[] = [
       techCatalog.NestJS,
       techCatalog["Node.js"],
       techCatalog["Express.js"],
-      techCatalog["Spring Boot"],
       techCatalog["REST APIs"],
       techCatalog["JWT Auth"],
+      techCatalog["Socket.IO"],
     ],
   },
   {
     title: "Data",
     items: [
-      techCatalog.MongoDB,
       techCatalog.PostgreSQL,
-      techCatalog.MySQL,
+      techCatalog.SQLite,
       techCatalog.Prisma,
-      techCatalog.Firebase,
-      techCatalog.Neon,
+      techCatalog.Supabase,
+      techCatalog.MongoDB,
     ],
   },
   {
@@ -113,20 +139,20 @@ export const skillGroups: { title: string; items: Tech[] }[] = [
       techCatalog["GitHub Actions"],
       techCatalog.Vercel,
       techCatalog.Stripe,
-      techCatalog.Jenkins,
+      techCatalog.Vitest,
     ],
   },
 ];
 
 export const marqueeRows: Tech[][] = [
-  skillGroups[0].items,
-  skillGroups[1].items,
+  [...skillGroups[0].items, ...skillGroups[1].items],
+  skillGroups[2].items,
   [
-    ...skillGroups[2].items,
-    techCatalog.Git,
-    techCatalog.Docker,
+    ...skillGroups[3].items,
+    techCatalog.Vitest,
     techCatalog.Vercel,
     techCatalog.Stripe,
+    techCatalog.Docker,
   ],
 ];
 
@@ -136,6 +162,7 @@ const aliases: Record<string, string> = {
   Nextjs: "Next.js",
   Nestjs: "NestJS",
   NestJS: "NestJS",
+  ReactQuery: "TanStack Query",
 };
 
 export function resolveTech(name: string): Tech {

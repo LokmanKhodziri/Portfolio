@@ -4,7 +4,7 @@
 }
 
 .header {
-  max-width: var(--max-width);
+  max-width: var(--work-width);
   margin: 0 auto 1.75rem;
   padding: 0 1.25rem;
   display: flex;
@@ -146,7 +146,7 @@
 }
 
 .grouped {
-  max-width: var(--max-width);
+  max-width: var(--work-width);
   margin: 0 auto;
   padding: 0 1.25rem;
   display: flex;

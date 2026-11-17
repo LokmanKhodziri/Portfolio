@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
         <div className={styles.meta}>
           <p className={styles.brand}>Lokman Khodziri</p>
           <p className={styles.copy}>
-            Fullstack developer · Building reliable web products
+            Fullstack developer · Currently building ShiftMate
           </p>
           <p className={styles.legal}>
             © 2026 Lokman Khodziri. All rights reserved.

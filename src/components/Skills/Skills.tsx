@@ -46,7 +46,7 @@ function MarqueeRow({
 }
 
 function Skills() {
-  const [grouped, setGrouped] = useState(false);
+  const [grouped, setGrouped] = useState(true);
 
   const toggleGrouped = () => {
     startTransition(() => {
@@ -87,7 +87,7 @@ function Skills() {
               className={styles.viewAll}
               onClick={toggleGrouped}
             >
-              {grouped ? "Show less" : "View all"}
+              {grouped ? "Show rows" : "View all"}
               <span aria-hidden="true">›</span>
             </button>
           </div>

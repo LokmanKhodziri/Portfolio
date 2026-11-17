@@ -4,7 +4,7 @@ import { resolveTech } from "../../data/tech";
 
 interface ProjectsCardProps {
   src: string;
-  link: string;
+  link?: string;
   title: string;
   summary: string;
   stack: string[];
@@ -21,14 +21,9 @@ const ProjectsCard: React.FC<ProjectsCardProps> = ({
   role,
   featured = false,
 }) => {
-  return (
-    <a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={featured ? "projectCard featured" : "projectCard"}
-      data-featured={featured || undefined}
-    >
+  const className = featured ? "projectCard featured" : "projectCard";
+  const body = (
+    <>
       <div className="projectMedia">
         <img
           src={src}
@@ -42,9 +37,11 @@ const ProjectsCard: React.FC<ProjectsCardProps> = ({
       <div className="projectBody">
         <div className="projectMeta">
           <span className="projectRole">{role}</span>
-          <span className="projectArrow" aria-hidden="true">
-            →
-          </span>
+          {link ? (
+            <span className="projectArrow" aria-hidden="true">
+              →
+            </span>
+          ) : null}
         </div>
         <h3>{title}</h3>
         <p>{summary}</p>
@@ -56,7 +53,27 @@ const ProjectsCard: React.FC<ProjectsCardProps> = ({
           ))}
         </ul>
       </div>
-    </a>
+    </>
+  );
+
+  if (link) {
+    return (
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        data-featured={featured || undefined}
+      >
+        {body}
+      </a>
+    );
+  }
+
+  return (
+    <article className={className} data-featured={featured || undefined}>
+      {body}
+    </article>
   );
 };
 

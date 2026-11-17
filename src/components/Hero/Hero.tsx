@@ -27,6 +27,13 @@ function ThemeIcons({
   );
 }
 
+const heroStack = [
+  techCatalog.Expo,
+  techCatalog["React Native"],
+  techCatalog["Next.js"],
+  techCatalog.NestJS,
+] as const;
+
 const Hero = () => {
   const { toggleTheme } = useTheme();
   const ignoreThemeClick = useRef(false);
@@ -93,51 +100,19 @@ const Hero = () => {
 
       <section id="hero" className={styles.hero}>
         <div className={styles.heroContent}>
-          <div className={styles.identity}>
-            <PixelTransition
-              className={styles.portrait}
-              firstSrc="/hero.webp"
-              secondSrc="/hero-alt.webp"
-              alt="Portrait of Lokman Khodziri"
-              secondAlt="Alternate portrait of Lokman Khodziri"
-            />
-            <div className={styles.identityText}>
-              <p className={styles.brand}>Lokman Khodziri</p>
-              <div className={styles.identityLinks}>
-                <a
-                  href="https://github.com/lokmankhodziri"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <ThemeIcons light={githubLight} dark={githubDark} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/lokmankhodziri/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <ThemeIcons light={linkedinLight} dark={linkedinDark} />
-                </a>
-              </div>
-            </div>
-          </div>
-          <h1 className={styles.headline}>
-            Fullstack apps from API to interface.
-          </h1>
+          <PixelTransition
+            className={styles.portrait}
+            firstSrc="/hero.webp"
+            secondSrc="/hero-alt.webp"
+            alt="Portrait of Lokman Khodziri"
+            secondAlt="Alternate portrait of Lokman Khodziri"
+          />
+          <p className={styles.brand}>Lokman Khodziri</p>
+          <p className={styles.eyebrow}>Currently shipping</p>
+          <h1 className={styles.headline}>Building ShiftMate</h1>
           <p className={styles.support}>
-            I build and ship web products end to end —{" "}
-            <span className={styles.inlineTech}>
-              <TechBadge tech={techCatalog["Next.js"]} variant="inline" />
-              <TechBadge tech={techCatalog.React} variant="inline" />
-            </span>{" "}
-            frontends,{" "}
-            <span className={styles.inlineTech}>
-              <TechBadge tech={techCatalog.NestJS} variant="inline" />
-              <TechBadge tech={techCatalog["Node.js"]} variant="inline" />
-            </span>{" "}
-            backends, and production deploys.
+            An offline-first shift calendar for Malaysian rotating schedules —
+            plus fullstack web products from API to interface.
           </p>
           <div className={styles.ctaGroup}>
             <a href="#projects" className={styles.primaryButton}>
@@ -147,6 +122,13 @@ const Hero = () => {
               Download resume
             </a>
           </div>
+          <ul className={styles.stackPills}>
+            {heroStack.map((tech) => (
+              <li key={tech.name}>
+                <TechBadge tech={tech} variant="compact" />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </header>
