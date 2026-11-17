@@ -11,6 +11,7 @@
   --btn-text: #f8f9fb;
   --shadow: 0 1px 0 rgba(20, 23, 28, 0.04);
   --max-width: 48rem;
+  --work-width: 64rem;
   --font-display: "Syne", sans-serif;
   --font-body: "Figtree", sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -49,16 +50,22 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   background-image:
-    linear-gradient(rgba(20, 23, 28, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(20, 23, 28, 0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(rgba(20, 23, 28, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 23, 28, 0.012) 1px, transparent 1px);
+  background-size: 72px 72px;
   background-attachment: fixed;
 }
 
-[data-theme="dark"] body {
+body[data-theme="dark"] {
   background-image:
-    linear-gradient(rgba(238, 241, 244, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(238, 241, 244, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(238, 241, 244, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(238, 241, 244, 0.025) 1px, transparent 1px);
+}
+
+@media (pointer: coarse) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
 #root {

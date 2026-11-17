@@ -1,4 +1,8 @@
-import React from "react";
+import { useRef, type PointerEvent } from "react";
+import { useTheme } from "../common/useTheme";
+import TechBadge from "../common/TechBadge";
+import PixelTransition from "../common/PixelTransition";
+import { techCatalog } from "../../data/tech";
 import styles from "./HeroStyles.module.css";
 import sun from "../../assets/sun.svg";
 import moon from "../../assets/moon.svg";
@@ -7,17 +11,48 @@ import githubDark from "../../assets/github-dark.svg";
 import linkedinLight from "../../assets/linkedin-light.svg";
 import linkedinDark from "../../assets/linkedin-dark.svg";
 import CV from "../../assets/Lokman_Resume_V8.pdf";
-import { useTheme } from "../common/useTheme";
-import TechBadge from "../common/TechBadge";
-import PixelTransition from "../common/PixelTransition";
-import { techCatalog } from "../../data/tech";
 
-const Hero: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+function ThemeIcons({
+  light,
+  dark,
+}: {
+  light: string;
+  dark: string;
+}) {
+  return (
+    <>
+      <img className={styles.iconLight} src={light} alt="" />
+      <img className={styles.iconDark} src={dark} alt="" />
+    </>
+  );
+}
 
-  const themeIcon = theme === "light" ? sun : moon;
-  const githubIcon = theme === "light" ? githubLight : githubDark;
-  const linkedinIcon = theme === "light" ? linkedinLight : linkedinDark;
+const heroStack = [
+  techCatalog.Expo,
+  techCatalog["React Native"],
+  techCatalog["Next.js"],
+  techCatalog.NestJS,
+] as const;
+
+const Hero = () => {
+  const { toggleTheme } = useTheme();
+  const ignoreThemeClick = useRef(false);
+
+  const handleThemePointerDown = (
+    event: PointerEvent<HTMLButtonElement>
+  ) => {
+    if (event.button !== 0) return;
+    ignoreThemeClick.current = true;
+    toggleTheme();
+  };
+
+  const handleThemeClick = () => {
+    if (ignoreThemeClick.current) {
+      ignoreThemeClick.current = false;
+      return;
+    }
+    toggleTheme();
+  };
 
   return (
     <header className={styles.wrapper}>
@@ -39,7 +74,7 @@ const Hero: React.FC = () => {
               className={styles.iconLink}
               aria-label="GitHub"
             >
-              <img src={githubIcon} alt="" />
+              <ThemeIcons light={githubLight} dark={githubDark} />
             </a>
             <a
               href="https://www.linkedin.com/in/lokmankhodziri/"
@@ -48,15 +83,16 @@ const Hero: React.FC = () => {
               className={styles.iconLink}
               aria-label="LinkedIn"
             >
-              <img src={linkedinIcon} alt="" />
+              <ThemeIcons light={linkedinLight} dark={linkedinDark} />
             </a>
             <button
               type="button"
               className={styles.themeToggle}
-              onClick={toggleTheme}
+              onPointerDown={handleThemePointerDown}
+              onClick={handleThemeClick}
               aria-label="Toggle color mode"
             >
-              <img src={themeIcon} alt="" />
+              <ThemeIcons light={sun} dark={moon} />
             </button>
           </div>
         </div>
@@ -64,51 +100,19 @@ const Hero: React.FC = () => {
 
       <section id="hero" className={styles.hero}>
         <div className={styles.heroContent}>
-          <div className={styles.identity}>
-            <PixelTransition
-              className={styles.portrait}
-              firstSrc="/hero.webp"
-              secondSrc="/hero-alt.webp"
-              alt="Portrait of Lokman Khodziri"
-              secondAlt="Alternate portrait of Lokman Khodziri"
-            />
-            <div className={styles.identityText}>
-              <p className={styles.brand}>Lokman Khodziri</p>
-              <div className={styles.identityLinks}>
-                <a
-                  href="https://github.com/lokmankhodziri"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <img src={githubIcon} alt="" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/lokmankhodziri/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <img src={linkedinIcon} alt="" />
-                </a>
-              </div>
-            </div>
-          </div>
-          <h1 className={styles.headline}>
-            Fullstack apps from API to interface.
-          </h1>
+          <PixelTransition
+            className={styles.portrait}
+            firstSrc="/hero.webp"
+            secondSrc="/hero-alt.webp"
+            alt="Portrait of Lokman Khodziri"
+            secondAlt="Alternate portrait of Lokman Khodziri"
+          />
+          <p className={styles.brand}>Lokman Khodziri</p>
+          <p className={styles.eyebrow}>Currently shipping</p>
+          <h1 className={styles.headline}>Building ShiftMate</h1>
           <p className={styles.support}>
-            I build and ship web products end to end —{" "}
-            <span className={styles.inlineTech}>
-              <TechBadge tech={techCatalog["Next.js"]} variant="inline" />
-              <TechBadge tech={techCatalog.React} variant="inline" />
-            </span>{" "}
-            frontends,{" "}
-            <span className={styles.inlineTech}>
-              <TechBadge tech={techCatalog.NestJS} variant="inline" />
-              <TechBadge tech={techCatalog["Node.js"]} variant="inline" />
-            </span>{" "}
-            backends, and production deploys.
+            An offline-first shift calendar for Malaysian rotating schedules —
+            plus fullstack web products from API to interface.
           </p>
           <div className={styles.ctaGroup}>
             <a href="#projects" className={styles.primaryButton}>
@@ -118,6 +122,13 @@ const Hero: React.FC = () => {
               Download resume
             </a>
           </div>
+          <ul className={styles.stackPills}>
+            {heroStack.map((tech) => (
+              <li key={tech.name}>
+                <TechBadge tech={tech} variant="compact" />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </header>

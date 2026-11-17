@@ -8,11 +8,11 @@
     <title>Lokman Khodziri — Fullstack Developer</title>
     <meta
       name="description"
-      content="Lokman Khodziri is a fullstack developer who builds and ships web apps end to end — Node.js, Express, React, databases, auth, and production deploys."
+      content="Lokman Khodziri is a fullstack developer currently building ShiftMate — Expo, React Native, Next.js, NestJS, and production deploys from API to interface."
     />
     <meta
       name="keywords"
-      content="Lokman Khodziri, fullstack developer, Node.js, React, Express, portfolio, web developer Malaysia"
+      content="Lokman Khodziri, fullstack developer, ShiftMate, Expo, React Native, Next.js, NestJS, TypeScript, portfolio, web developer Malaysia"
     />
     <meta name="author" content="Lokman Khodziri" />
     <meta name="robots" content="index, follow" />
@@ -24,7 +24,7 @@
     <meta property="og:title" content="Lokman Khodziri — Fullstack Developer" />
     <meta
       property="og:description"
-      content="Fullstack developer building web apps from API to interface — Node.js, Express, React, and production deploys."
+      content="Fullstack developer currently building ShiftMate — Expo, React Native, Next.js, NestJS, and production deploys."
     />
     <meta property="og:image" content="https://lokmankhodziri.com/og-image.png" />
     <meta property="og:image:alt" content="Portrait of Lokman Khodziri" />
@@ -37,7 +37,7 @@
     <meta name="twitter:title" content="Lokman Khodziri — Fullstack Developer" />
     <meta
       name="twitter:description"
-      content="Fullstack developer building web apps from API to interface — Node.js, Express, React, and production deploys."
+      content="Fullstack developer currently building ShiftMate — Expo, React Native, Next.js, NestJS, and production deploys."
     />
     <meta name="twitter:image" content="https://lokmankhodziri.com/og-image.png" />
 
@@ -72,16 +72,24 @@
         ],
         "knowsAbout": [
           "Fullstack development",
-          "Node.js",
-          "Express.js",
-          "React",
+          "Expo",
+          "React Native",
+          "Next.js",
+          "NestJS",
           "TypeScript",
-          "REST APIs"
+          "React",
+          "Node.js"
         ]
       }
     </script>
   </head>
   <body>
+    <script>
+      document.body.setAttribute(
+        "data-theme",
+        localStorage.getItem("theme") === "dark" ? "dark" : "light"
+      );
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

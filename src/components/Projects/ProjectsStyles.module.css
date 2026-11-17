@@ -3,7 +3,7 @@
 }
 
 .projectsContainer {
-  max-width: var(--max-width);
+  max-width: var(--work-width);
   margin: 0 auto;
   padding: 0 1.25rem;
   display: grid;
@@ -30,6 +30,8 @@
   color: inherit;
   height: 100%;
   box-shadow: var(--shadow);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
   transition:
     border-color 0.25s var(--ease),
     transform 0.25s var(--ease),
@@ -39,6 +41,18 @@
 .projectsContainer :global(.projectCard:hover) {
   border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
   transform: translateY(-3px);
+}
+
+.projectsContainer :global(article.projectCard) {
+  cursor: default;
+}
+
+.projectsContainer :global(article.projectCard:hover) {
+  transform: none;
+}
+
+.projectsContainer :global(article.projectCard:hover .projectMedia img) {
+  transform: none;
 }
 
 .projectsContainer :global(.projectMedia) {
@@ -135,12 +149,18 @@
   .projectsContainer :global(.projectCard[data-featured="true"] .projectMedia) {
     border-bottom: none;
     border-right: 1px solid var(--border);
+    background: #dce8e4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .projectsContainer :global(.projectCard[data-featured="true"] .projectMedia img) {
     height: 100%;
-    min-height: 280px;
+    min-height: 320px;
     aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center;
   }
 
   .projectsContainer :global(.projectCard[data-featured="true"] .projectBody) {

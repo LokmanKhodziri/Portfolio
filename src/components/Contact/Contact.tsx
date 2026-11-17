@@ -10,8 +10,8 @@ const Contact: React.FC = () => {
           <p className="sectionEyebrow">Contact</p>
           <h2 className="sectionTitle">Let’s build something solid</h2>
           <p className="sectionSubtitle">
-            Open to fullstack roles, freelance builds, and collaborations.
-            Tell me what you’re shipping — I’ll get back to you.
+            Currently shipping ShiftMate. Open to fullstack conversations,
+            freelance builds, and collaborations.
           </p>
         </div>
       </Reveal>

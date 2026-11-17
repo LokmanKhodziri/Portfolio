@@ -5,6 +5,15 @@ import Reveal from "../common/Reveal";
 
 const projects = [
   {
+    src: "/projects/shiftmate-roster.webp",
+    title: "ShiftMate",
+    role: "Mobile · Current product",
+    summary:
+      "Offline-first shift calendar for Malaysian rotating-shift workers — rotations, overtime, public holidays, and rest days on device. Expo and React Native, SQLite locally, Zustand on the client, optional Plus backup with Supabase.",
+    stack: ["Expo", "React Native", "Zustand", "SQLite", "Supabase"],
+    featured: true,
+  },
+  {
     src: "/projects/musafirgo.webp",
     link: "https://musafirgo.vercel.app/",
     title: "Musafir-Go",
@@ -12,7 +21,6 @@ const projects = [
     summary:
       "Muslim-friendly travel planner with day-by-day itineraries, maps, prayer times, and nearby halal spots. Next.js frontend backed by an Express + Prisma API with Google/GitHub OAuth.",
     stack: ["Next.js", "Express.js", "Prisma", "OAuth"],
-    featured: true,
   },
   {
     src: "/projects/service-flow.webp",
@@ -39,7 +47,7 @@ const projects = [
     role: "Fullstack · Ongoing",
     summary:
       "PC parts price comparison for Malaysian marketplaces. Import Shopee and Lazada exports, normalize messy product titles into canonical parts, and track MYR price trends for GPUs, CPUs, and RAM.",
-    stack: ["React", "Node.js", "Data pipeline"],
+    stack: ["Next.js", "Prisma", "TanStack Query"],
   },
 ];
 
